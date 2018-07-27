@@ -230,6 +230,8 @@ input, select, textarea {
 
 	@media screen and (max-width: 736px) {
 
+		#intro .logo-holder { width: 100% !important; }
+
 		h1 {
 			font-size: 2em;
 		}
@@ -3978,7 +3980,7 @@ background-color: #000;
 
 #intro .filmskatraka img {
 	position: fixed;
-    right: 200px;
+    right: 150px;
 	top: 0px;
 	bottom: 0px;
 }
@@ -4039,10 +4041,49 @@ color: #ec1c2b;
 }
 
 /****************** IGOR *************************/
+#intro {}
+#intro .logo-holder { width: 50%; }
+#intro .logo-holder img { max-width: 100%;}
+
 #intro h1 {
 	line-height: 1;
 }
 
+#intro h2 {
+	font-size: 1.5em;
+}
+
+#intro p {
+	line-height: 1.2;
+}
+
 #oprojektu p{
 	text-align: justify;
+}
+
+
+#pravila .inner {
+	height: 100%;
+}
+
+#clock * {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	cursor: pointer;
+}
+
+#clock .countdown-holder{
+	display: inline-block;
+	width: 100px;
+	height: 150px;
+	/*border:1px dashed #ccc;*/
+	font-size: 80px;
+	margin-right: 30px;
+}
+
+#clock .countdown-holder p {
+	font-size: 30px;
+	margin-top: -50px;
 }
