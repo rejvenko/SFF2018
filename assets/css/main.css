@@ -4037,3 +4037,12 @@ color: #ec1c2b;
 .unbold {
 	font-weight: normal;
 }
+
+/****************** IGOR *************************/
+#intro h1 {
+	line-height: 1;
+}
+
+#oprojektu p{
+	text-align: justify;
+}
