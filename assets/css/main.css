@@ -92,7 +92,7 @@ input, select, textarea {
 	}
 
 	body {
-		background: #312450;
+		background: #000;
 	}
 
 		body.is-preload *, body.is-preload *:before, body.is-preload *:after {
@@ -110,7 +110,7 @@ input, select, textarea {
 
 	body, input, select, textarea {
 		color: rgba(255, 255, 255, 1);
-		font-family: Arial, Helvetica, sans-serif;
+		font-family: 'Roboto', sans-serif;
 		font-size: 16.5pt;
 		font-weight: normal;
 		line-height: 1.75;
@@ -279,7 +279,7 @@ input, select, textarea {
 		background: rgba(255, 255, 255, 0.05);
 		border-radius: 0.25em;
 		border: solid 1px rgba(255, 255, 255, 0.15);
-		font-family: "Courier New", monospace;
+		font-family: 'Roboto', sans-serif;
 		font-size: 0.9em;
 		margin: 0 0.25em;
 		padding: 0.25em 0.65em;
@@ -287,7 +287,7 @@ input, select, textarea {
 
 	pre {
 		-webkit-overflow-scrolling: touch;
-		font-family: "Courier New", monospace;
+		font-family: 'Roboto', sans-serif;
 		font-size: 0.9em;
 		margin: 0 0 2em 0;
 	}
@@ -1909,7 +1909,7 @@ input, select, textarea {
 		button.primary,
 		.button.primary {
 			background-color: #ffffff;
-			color: #312450 !important;
+			color: #000 !important;
 		}
 
 			input[type="submit"].primary:after,
@@ -2350,7 +2350,7 @@ input, select, textarea {
 
 		select option {
 			color: #ffffff;
-			background: #312450;
+			background: #000;
 		}
 
 		select:focus::-ms-value {
@@ -2433,7 +2433,7 @@ input, select, textarea {
 		input[type="radio"]:checked + label:before {
 			background: #ffffff;
 			border-color: #ffffff;
-			color: #b74e91;
+			color: #ec1c2b;
 			content: '\f00c';
 		}
 
@@ -2498,7 +2498,7 @@ input, select, textarea {
 			display: block;
 			background: #ffffff;
 			border-radius: 100%;
-			color: #312450;
+			color: #ec1c2b;
 			text-align: center;
 			line-height: 2.5em;
 			margin: 0 0 1.3em 0;
@@ -2525,7 +2525,7 @@ input, select, textarea {
 				}
 
 				.wrapper.style3 .icon.major:before {
-					color: #b74e91;
+					color: #ec1c2b;
 				}
 
 				.wrapper.style3-alt .icon.major:before {
@@ -3236,7 +3236,7 @@ input, select, textarea {
 		}
 
 		.wrapper.style3 {
-			background-color: #b74e91;
+			background-color: #ec1c2b;
 		}
 
 		.wrapper.style3-alt {
@@ -3366,6 +3366,7 @@ input, select, textarea {
 			-ms-flex: 1;
 			flex: 1;
 			text-align: right;
+		    
 		}
 
 			#header > nav > ul {
@@ -3957,11 +3958,11 @@ background-color: #000;
 }
 
 #atlantic {
-    background-attachment: fixed;
-    background-image: url(images/redbg.png);
-    background-position: top right;
+    background-image: url(images/traka.png), url(images/redbg.png) ;
+    background-position: right bottom, top left;
     background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background-size: contain, cover;
+    padding-bottom: 300px;
 }
 
 #footer {
@@ -3972,7 +3973,6 @@ background-color: #000;
 	margin: 0 auto;
 	text-align: center;
 	display: block;
-	width: 50%;
     height: auto;
 }
 
@@ -3983,7 +3983,57 @@ background-color: #000;
 	bottom: 0px;
 }
 
-@media screen and (max-width: 1024px) { 
+@media screen and (max-width: 1280px) { 
 .filmskatraka img { display: none; }  
 }
 
+@media screen and (max-width: 1280px) { 
+#sidebar + #wrapper  { padding-top: 161px;}
+#sidebar { display: none; } 
+}
+
+@media screen and (min-width: 1280px) { 
+.navbar {display: none;}
+}
+
+
+
+.custom-toggler.navbar-toggler {
+    border-color: rgb(255,102,203);
+	padding: 1rem !important;
+}
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.navbar {
+	    padding: 2rem;
+		font-size: 18px;
+}
+
+.navbar li {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-bottom: 2px solid #ec1c2b;
+}
+
+.navbar li a {
+	
+	border-bottom: none;
+	text-decoration: none;
+
+}
+
+.navbar li a:hover {
+	
+color: #ec1c2b;
+
+}
+
+.navbar-toggler {
+	margin-bottom: 10px;
+}
+
+.unbold {
+	font-weight: normal;
+}
