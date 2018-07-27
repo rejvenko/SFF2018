@@ -5,12 +5,14 @@
 */
 
 (function($) {
-
+    var resizeTimer;
 	var	$window = $(window),
 		$body = $('body'),
 		$sidebar = $('#sidebar');
 
-	// Breakpoints.
+    updateSectionHeight();
+
+    // Breakpoints.
 		breakpoints({
 			xlarge:   [ '1281px',  '1680px' ],
 			large:    [ '981px',   '1280px' ],
@@ -187,4 +189,23 @@
 				}
 			});
 
+
+	// Sections min height
+    window.onresize = function(event) {
+        clearInterval(resizeTimer);
+
+        resizeTimer = setTimeout(function() {
+            updateSectionHeight();
+        }, 250);
+    };
+
 })(jQuery);
+
+function updateSectionHeight(height){
+
+	if (typeof height === 'undefined') {
+        height = $(window).innerHeight();
+	}
+
+    $('#wrapper > section').css('minHeight', height + 'px');
+}
