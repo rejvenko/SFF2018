@@ -4071,7 +4071,7 @@ color: #ec1c2b;
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-	cursor: pointer;
+	cursor: default;
 }
 
 #clock .countdown-holder{

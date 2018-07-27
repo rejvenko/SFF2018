@@ -210,7 +210,7 @@ function updateSectionHeight(height){
     $('#wrapper > section').css('minHeight', height + 'px');
 
 	if (height > 500) {
-		$('#pravila').css('height',  height + 'px');
+		$('#ofilmu').css('height',  height + 'px');
 	}
 
 
