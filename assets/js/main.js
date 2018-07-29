@@ -199,7 +199,96 @@
         }, 250);
     };
 
+    $('#files').change(function(e) {
+    	// if (files.length === 1) {
+    	// 	var filesize = files[0].size;
+    	// 	if (filesize > 157286400) {
+    	// 		var msg = 'Fajl je prevelik, maksimalna velicina fajla je 150mb';
+    	// 		error_handler(msg);
+			// }
+		// }
+
+        console.log(check_file_upload());
+
+        if (check_file_upload() == false) {
+            var msg = 'Fajl koji ste izabrali nije uredu. Video fajl moze biti maksimalne velicine 150mb.'
+            error_handler(msg, '#name');
+            return;
+		}
+
+		// console.log(e)
+		// var files = e.target.files;
+		// window.filess = files;
+    })
+
 })(jQuery);
+
+$('#submit_form').click(function(e) {
+	e.preventDefault();
+	e.stopPropagation();
+
+	// get fields
+	var form = $(forma);
+	var data = $(form).serializeArray();
+
+	window.data = data;
+	var fields = getFields(data);
+
+    // validate fields
+
+	if (fields.name.value.length <= 2 || fields.name.length > 50) {
+		var msg = 'Unesite vaše ime.';
+		error_handler(msg, '#name');
+		return;
+	} else if (fields.surname.value.length <= 2 || fields.surname.length > 50) {
+        var msg = 'Unesite vaše preizme.';
+        error_handler(msg, '#surname');
+		return;
+	} else if (fields.country.value == '') {
+        var msg = 'Izaberite drzavu.';
+        error_handler(msg, '#country');
+        return;
+    } else if (fields.email.value.length <= 7 || fields.email.value.indexOf('@') == -1) {
+        var msg = 'Unesite vasu email adresu.';
+        error_handler(msg, '#email');
+        return;
+    } else if (check_file_upload() !== true) {
+        var msg = 'Izaberite fajl za upload (max 150mb).';
+        error_handler(msg, '#files');
+        return;
+	}
+
+    //
+	// console.log(data);
+});
+
+
+function check_file_upload() {
+	var elem = $('#files');
+	var files = $(elem)[0].files;
+
+	if (files.length != 1) {
+		return false;
+	}
+	console.log(files);
+
+	var filesize = files[0].size;
+	var filetype = files[0].type;
+
+	if (filesize > 157286400) {
+		return false;
+	}
+
+	return true;
+}
+
+function error_handler(msg, element) {
+	$('.form-message').text(msg);
+
+	if (typeof element != 'undefined') {
+		$(element).focus();
+	}
+}
 
 function updateSectionHeight(height){
 
@@ -212,6 +301,14 @@ function updateSectionHeight(height){
 	if (height > 500) {
 		$('#ofilmu').css('height',  height + 'px');
 	}
+}
 
+function getFields(data) {
+	var val = [];
 
+    data.forEach(function(field){
+		val[field.name] = field;
+    })
+
+	return val;
 }
