@@ -198,20 +198,26 @@
                     quis.</p>
                 <div class="style1">
                     <section>
-                        <form method="post" name="forma" action="#">
+                        <!--<form action="app/upload.php" method="post" enctype="multipart/form-data">-->
+                            <!--Select image to upload:-->
+                            <!--<input type="file" name="files" id="files">-->
+                            <!--<input type="submit" value="Upload Image" name="submit">-->
+                        <!--</form>-->
+
+                        <form method="post" enctype="multipart/form-data"  name="forma" id="forma" action="app/upload.php">
                             <div class="fields">
                                 <div class="field half">
                                     <label for="name">Ime</label>
-                                    <input type="text" name="name" id="name"/>
+                                    <input type="text" name="name" value="sss" id="name"/>
                                 </div>
                                 <div class="field half">
                                     <label for="surname">Prezime</label>
-                                    <input type="text" name="surname" id="surname"/>
+                                    <input type="text" name="surname" value="aaaa" id="surname"/>
                                 </div>
                                 <div class="field">
                                     <select name="country" id="country">
                                         <option value="">- Zemlja -</option>
-                                        <option value="sr">Srbija</option>
+                                        <option value="sr" selected>Srbija</option>
                                         <option value="hr">Hrvatska</option>
                                         <option value="slo">Slovenija</option>
                                         <option value="bih">Bosna i Hercegovina</option>
@@ -219,11 +225,16 @@
                                 </div>
                                 <div class="field">
                                     <label for="email">Email</label>
-                                    <input type="text" name="email" id="email"/>
+                                    <input type="text" name="email" value="asdsaa@sadasd.com" id="email"/>
                                 </div>
 
                                 <div class="field">
-                                    <input type="file" name="files" id="files" accept="flv|mp4|video/*|image/*" class="button icon fa-upload sakriveno">
+                                    <input type="file"
+                                           name="files"
+                                           id="files"
+                                           accept="video/*,video/x-flv,video/mp4,video/avi,application/x-troff-msvideo,video/x-ms-wmv,video/quicktime"
+                                           class="button icon fa-upload sakriveno">
+
                                     <label for="files" class="button fit icon fa-upload">UPLOAD</label>
                                 </div>
                                 <div class="field">
@@ -232,7 +243,8 @@
                                 </div>
                             </div>
                             <ul class="actions">
-                                <li><a href="" id="submit_form" class="button submit fit">POŠALJI</a></li>
+                                <input type="button" id="submit_form" value="POŠALJI" class="button submit fit" name="asa">
+                                <!--<li><a href="" id="submit_form" class="button submit fit">POŠALJI</a></li>-->
                             </ul>
                         </form>
                     </section>
@@ -268,7 +280,6 @@
             </div>
         </div>
     </section>
-
 
     <!-- VESTI -->
     <section id="vesti" class="wrapper style2 spotlights">
