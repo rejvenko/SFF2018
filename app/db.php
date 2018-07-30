@@ -1,12 +1,8 @@
 <?php
 require_once 'browser.php';
+require_once 'config.php';
 
-$host = 'localhost';
-$db_name = 'ssmiif';
-$db_user = 'root';
-$db_pass = 'nekipass';
-
-$connection = mysqli_connect($host, $db_user, $db_pass, $db_name);
+$connection = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
 if (!$connection) {
   die('No sql connection!');
 }

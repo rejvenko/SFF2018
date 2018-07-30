@@ -1,0 +1,6 @@
+<?php
+
+$host = 'localhost';
+$db_name = 'sff';
+$db_user = 'root';
+$db_pass = '';
