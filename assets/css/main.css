@@ -3993,7 +3993,7 @@ background-color: #000;
 	bottom: 0px;
 }
 
-@media screen and (max-width: 1280px) { 
+@media screen and (max-width: 1280px) {
 .filmskatraka img { display: none; }  
 }
 
@@ -4094,6 +4094,16 @@ color: #ec1c2b;
 #clock .countdown-holder p {
 	font-size: 30px;
 	margin-top: -50px;
+}
+
+#forma input:disabled,
+#forma select:disabled {
+	opacity: 0.3;
+	cursor: default;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 
 .features {

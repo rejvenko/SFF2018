@@ -258,6 +258,17 @@ $('#submit_form').click(function(e) {
         return;
 	}
 
+	var params = {
+	    name    : fields.name.value,
+        surname : fields.surname.value,
+        email   : fields.email.value,
+        country : fields.country.value
+    };
+
+    // $("#forma :input, #forma select").attr("disabled", true);
+    $('#forma').submit();
+    console.log(params);
+
     //
 	// console.log(data);
 });
