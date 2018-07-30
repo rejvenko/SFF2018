@@ -4087,3 +4087,13 @@ color: #ec1c2b;
 	font-size: 30px;
 	margin-top: -50px;
 }
+
+#forma input:disabled,
+#forma select:disabled {
+	opacity: 0.3;
+	cursor: default;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
