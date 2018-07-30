@@ -4,7 +4,7 @@ require_once 'browser.php';
 $host = 'localhost';
 $db_name = 'ssmiif';
 $db_user = 'root';
-$db_pass = 'erve34po';
+$db_pass = 'nekipass';
 
 $connection = mysqli_connect($host, $db_user, $db_pass, $db_name);
 if (!$connection) {
