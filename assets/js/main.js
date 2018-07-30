@@ -306,8 +306,8 @@ function prepareForm() {
   });
 }
 
-// var sff_max_file_size = 157286400;
-var sff_max_file_size = 1073741824;
+var sff_max_file_size = 157286400;
+// var sff_max_file_size = 1073741824;
 
 function check_file_upload() {
 	var elem = $('#files');
