@@ -258,21 +258,51 @@ $('#submit_form').click(function(e) {
         return;
 	}
 
-	var params = {
-	    name    : fields.name.value,
-        surname : fields.surname.value,
-        email   : fields.email.value,
-        country : fields.country.value
-    };
-
-    // $("#forma :input, #forma select").attr("disabled", true);
-    $('#forma').submit();
-    console.log(params);
-
-    //
-	// console.log(data);
+	prepareForm();
+  $('#forma').submit();
 });
 
+function onSuccess() {
+  $('#forma').trigger("reset").hide();
+  $('.progress').hide();
+
+  error_handler('Uspjesno!');
+}
+
+function prepareForm() {
+  var bar = $('#bar');
+  var percent = $('#percent');
+
+  $('#forma').ajaxForm({
+    beforeSubmit: function () {
+      document.getElementById("progress_div").style.display = "block";
+      var percentVal = '0%';
+      bar.width(percentVal);
+      percent.html(percentVal);
+    },
+
+    uploadProgress: function (event, position, total, percentComplete) {
+      var percentVal = percentComplete + '%';
+      console.log(percentVal);
+      bar.width(percentVal);
+      percent.html(percentVal);
+    },
+
+    success: function () {
+      var percentVal = '100%';
+      bar.width(percentVal);
+      percent.html(percentVal);
+    },
+
+    complete: function (xhr) {
+      if (xhr.responseText === 'success') {
+        onSuccess();
+      } else {
+        error_handler(xhr.responseText);
+      }
+    }
+  });
+}
 
 function check_file_upload() {
 	var elem = $('#files');
@@ -281,10 +311,8 @@ function check_file_upload() {
 	if (files.length != 1) {
 		return false;
 	}
-	console.log(files);
 
 	var filesize = files[0].size;
-	var filetype = files[0].type;
 
 	if (filesize > 157286400) {
 		return false;
@@ -295,7 +323,7 @@ function check_file_upload() {
 
 function error_handler(msg, element) {
 	$('.form-message').text(msg);
-
+  console.error(msg);
 	if (typeof element != 'undefined') {
 		$(element).focus();
 	}
