@@ -1991,7 +1991,7 @@ input, select, textarea {
 
 		.features section {
 			padding: 3.5em 3em 1em 7em ;
-			width: 50%;
+			width: 100%;
 			border-top: solid 1px rgba(255, 255, 255, 0.15);
 			position: relative;
 		}
@@ -3985,6 +3985,14 @@ background-color: #000;
 	bottom: 0px;
 }
 
+
+#moodboard .filmskatraka img {
+	position: fixed;
+    right: 150px;
+	top: 0px;
+	bottom: 0px;
+}
+
 @media screen and (max-width: 1280px) { 
 .filmskatraka img { display: none; }  
 }
@@ -4086,4 +4094,14 @@ color: #ec1c2b;
 #clock .countdown-holder p {
 	font-size: 30px;
 	margin-top: -50px;
+}
+
+.features {
+	max-width: 60%;
+}
+
+
+@media screen and (max-width: 1280px) {
+	.features {
+	max-width: 100%;
 }
