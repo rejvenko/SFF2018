@@ -284,8 +284,10 @@ function prepareForm() {
     uploadProgress: function (event, position, total, percentComplete) {
       var percentVal = percentComplete + '%';
       console.log(percentVal);
-      bar.width(percentVal);
-      percent.html(percentVal);
+      $('.progress .percent').text(percentVal);
+      $('.progress .bar').width(percentVal);
+      // $(bar).width(percentVal);
+      // $(percent).text(percentVal);
     },
 
     success: function () {
@@ -304,6 +306,9 @@ function prepareForm() {
   });
 }
 
+// var sff_max_file_size = 157286400;
+var sff_max_file_size = 1073741824;
+
 function check_file_upload() {
 	var elem = $('#files');
 	var files = $(elem)[0].files;
@@ -314,7 +319,7 @@ function check_file_upload() {
 
 	var filesize = files[0].size;
 
-	if (filesize > 157286400) {
+	if (filesize > sff_max_file_size) {
 		return false;
 	}
 
