@@ -24,6 +24,11 @@ if ($request_method === 'POST' && $data !== false) {
   in_array($data['country'], $country) ? null : exit('Molimo izaberite državu.');
   filter_var($data['email'], FILTER_VALIDATE_EMAIL) !== false ? null : exit('Email nije unešen ili nije validan.');
 
+
+  require_once 'db.php';
+  $data['name'] = mysqli_real_escape_string($connection, $data['name']);
+  $data['surname'] = mysqli_real_escape_string($connection, $data['surname']);
+
   $file = $_FILES['files'];
 
   if (empty($file) || $file['error'] != 0) {
@@ -38,7 +43,6 @@ if ($request_method === 'POST' && $data !== false) {
   $file['size'] <= $max_file_size ? null : exit('Video fajl koji ste odabrali nije odgovarajuće veličine.');
 
   // check does user exist with this email
-  require_once 'db.php';
   $exist = user_exist($data['email'], $connection);
   $exist == false ? null : exit("Korisnik je već uploadovao fajl sa tim email-om.");
 
