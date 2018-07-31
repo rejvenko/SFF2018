@@ -237,23 +237,23 @@ $('#submit_form').click(function(e) {
     // validate fields
 
 	if (fields.name.value.length <= 2 || fields.name.length > 50) {
-		var msg = 'Unesite vaše ime.';
+		var msg = 'Ime nije unešeno ili je prekratko/predugačko.';
 		error_handler(msg, '#name');
 		return;
 	} else if (fields.surname.value.length <= 2 || fields.surname.length > 50) {
-        var msg = 'Unesite vaše preizme.';
+        var msg = 'Prezime nije unešeno ili je prekratko/predugacko.';
         error_handler(msg, '#surname');
 		return;
 	} else if (fields.country.value == '') {
-        var msg = 'Izaberite drzavu.';
+        var msg = 'Molimo izaberite državu.';
         error_handler(msg, '#country');
         return;
     } else if (fields.email.value.length <= 7 || fields.email.value.indexOf('@') == -1) {
-        var msg = 'Unesite vasu email adresu.';
+        var msg = 'Email nije unešen ili nije validan.';
         error_handler(msg, '#email');
         return;
     } else if (check_file_upload() !== true) {
-        var msg = 'Izaberite fajl za upload (max 150mb).';
+        var msg = 'Video fajl koji ste odabrali nije odgovarajuće veličine.';
         error_handler(msg, '#files');
         return;
 	}
@@ -266,7 +266,7 @@ function onSuccess() {
   $('#forma').trigger("reset").hide();
   $('.progress').hide();
 
-  error_handler('Uspjesno!');
+  error_handler('Video fajl je uspešno uploadovan.');
 }
 
 function prepareForm() {

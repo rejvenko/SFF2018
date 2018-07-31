@@ -19,10 +19,10 @@ $path = realpath('..');
 $data = haveFields($_POST, $required_fields);
 
 if ($request_method === 'POST' && $data !== false) {
-  strlen($data['name']) > 2 && strlen($data['name']) <= 50 ? null : exit('Name error');
-  strlen($data['surname']) > 2 && strlen($data['surname']) <= 50 ? null : exit('Surname error');
-  in_array($data['country'], $country) ? null : exit('Country error');
-  filter_var($data['email'], FILTER_VALIDATE_EMAIL) !== false ? null : exit('Email error');
+  strlen($data['name']) > 2 && strlen($data['name']) <= 50 ? null : exit('Ime nije unešeno ili je prekratko/predugačko.');
+  strlen($data['surname']) > 2 && strlen($data['surname']) <= 50 ? null : exit('Prezime nije unešeno ili je prekratko/predugacko.');
+  in_array($data['country'], $country) ? null : exit('Molimo izaberite državu.');
+  filter_var($data['email'], FILTER_VALIDATE_EMAIL) !== false ? null : exit('Email nije unešen ili nije validan.');
 
   $file = $_FILES['files'];
 
@@ -32,15 +32,15 @@ if ($request_method === 'POST' && $data !== false) {
   }
 
   // check extension
-  in_array($file['type'], $allowed) ? null : exit('File extension isnt allowed!');
+  in_array($file['type'], $allowed) ? null : exit('Fajl koji ste izabrali nema odgovarajuću ekstenziju. Dozvoljene ekstenzije su AVI, FLV, WMV, MOV, MP4.');
 
   // check file size
-  $file['size'] <= $max_file_size ? null : exit('File size error! Upload smaller file!');
+  $file['size'] <= $max_file_size ? null : exit('Video fajl koji ste odabrali nije odgovarajuće veličine.');
 
   // check does user exist with this email
   require_once 'db.php';
   $exist = user_exist($data['email'], $connection);
-  $exist == false ? null : exit("User already uploaded file!");
+  $exist == false ? null : exit("Korisnik je već uploadovao fajl sa tim email-om.");
 
   // create user && get user id
   $user_id = create_user($data['name'], $data['surname'], $data['email'], $data['country'], $connection);
