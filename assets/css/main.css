@@ -4176,3 +4176,9 @@ h1.major:after {
 	background-image: none;
 	background-color: #fff;
 }
+
+.atlogo {
+	    width: 100%;
+		max-width: 398px;
+    height: auto;
+}
