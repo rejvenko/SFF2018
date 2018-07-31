@@ -4160,3 +4160,19 @@ body.is-preload #sidebar nav ul li {
   left:48%;
 }
 
+#main {
+	  background-attachment: fixed;
+  background-image: url(images/redbg.png);
+  background-position: top right;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+#header {
+	background-color: #000;
+}
+
+h1.major:after {
+	background-image: none;
+	background-color: #fff;
+}
