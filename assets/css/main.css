@@ -4182,3 +4182,16 @@ h1.major:after {
 		max-width: 398px;
     height: auto;
 }
+
+.language_switch {
+  width: 100%;
+  position: relative;
+}
+
+.language_switch > div{
+  display: inline-block;
+}
+
+.language_switch div img {
+  display: block;
+}
