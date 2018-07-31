@@ -236,6 +236,8 @@ $('#submit_form').click(function(e) {
 
     // validate fields
 
+	var pravila = $('input#prihvatam_pravila').is(':checked');
+
 	if (fields.name.value.length <= 2 || fields.name.length > 50) {
 		var msg = 'Ime nije unešeno ili je prekratko/predugačko.';
 		error_handler(msg, '#name');
@@ -256,6 +258,10 @@ $('#submit_form').click(function(e) {
         var msg = 'Video fajl koji ste odabrali nije odgovarajuće veličine.';
         error_handler(msg, '#files');
         return;
+	} else if (pravila !== true) {
+    var msg = 'Da bi ste nastavili prihvatite pravila korišćenja.';
+    error_handler(msg, '#prihvatam_pravila');
+    return;
 	}
 
 	prepareForm();
