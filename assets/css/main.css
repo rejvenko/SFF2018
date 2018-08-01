@@ -3993,11 +3993,26 @@ body.is-preload #sidebar nav ul li {
   height: auto;
 }
 
+#intro {
+  position: relative;
+}
+#intro .inner {
+  max-width: 60%;
+}
+
+#intro .filmskatraka {
+  position: absolute;
+  width: 38%;
+  height: 100%;
+  right: 2%;
+  text-align: center;
+}
+
 #intro .filmskatraka img {
-  position: fixed;
-  right: 150px;
-  top: 0px;
-  bottom: 0px;
+  /*position: fixed;*/
+  /*right: 150px;*/
+  /*top: 0px;*/
+  /*bottom: 0px;*/
 }
 
 #moodboard .filmskatraka img {
@@ -4009,7 +4024,7 @@ body.is-preload #sidebar nav ul li {
 
 @media screen and (max-width: 1480px) {
   .filmskatraka img {
-    display: none;
+    /*display: none;*/
   }
 }
 
@@ -4020,6 +4035,22 @@ body.is-preload #sidebar nav ul li {
 
   #sidebar {
     display: none;
+  }
+
+  #intro .inner {
+    max-width: 75%;
+  }
+
+  #intro .filmskatraka {
+    position: absolute;
+    width: 20%;
+    height: 100%;
+    right: 2%;
+    text-align: center;
+  }
+
+  #intro .filmskatraka img {
+    max-width: 100%;
   }
 }
 
