@@ -9,13 +9,13 @@ if (!$connection) {
 
 //$query = mysqli_query($connection, 'SELECT * FROM users');
 //var_dump($query->num_rows, $query->fetch_assoc());
-function create_user($name, $lastname, $email, $country, $db_link) {
+function create_user($name, $lastname, $email, $country, $newsletter, $db_link) {
   $ip = getIP();
   $browser = new Browser();
   $browser = $browser->getAll();
 
-  $sql = "INSERT INTO users (name, lastname, email, country, ip, browser) VALUES " .
-  "('{$name}', '{$lastname}', '{$email}', '{$country}', '{$ip}', '{$browser}')";
+  $sql = "INSERT INTO users (name, lastname, email, country, druge_aktivnosti, ip, browser) VALUES " .
+  "('{$name}', '{$lastname}', '{$email}', '{$country}', {$newsletter}, '{$ip}', '{$browser}')";
   $query = mysqli_query($db_link, $sql);
 
   if ($query) {
