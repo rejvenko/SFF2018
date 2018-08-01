@@ -3950,6 +3950,18 @@ body.is-preload #sidebar nav ul li {
   background-size: 100% 100%;
 }
 
+#cetvrtavest {
+	  background-color: #000;
+}
+
+#petavest {
+	  background-attachment: fixed;
+  background-image: url(images/redbg.png);
+  background-position: top right;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
 #moodboard {
   background-attachment: fixed;
   background-image: url(images/redbg.png);
