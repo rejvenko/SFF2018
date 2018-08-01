@@ -4012,6 +4012,10 @@ body.is-preload #sidebar nav ul li {
   max-width: 75%;
 }
 
+#moodboard .features {
+  max-width: 100%;
+}
+
 #moodboard .filmskatraka {
   position: absolute;
   width: 24%;
