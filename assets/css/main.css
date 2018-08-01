@@ -4282,3 +4282,14 @@ h1.major:after {
     display: none;
   }
 }
+
+@media screen and (min-width: 700px) {
+
+#trakaispod {
+		  background-attachment: fixed;
+  background-image: url(images/redbg.png);
+  background-position: top right;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+    display:none;
+  }
