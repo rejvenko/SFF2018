@@ -224,7 +224,7 @@ $('#submit_form').click(function (e) {
   var fields = getFields(data);
 
   // validate fields
-  var pravila = $('input#prihvatam_pravila').is(':checked');
+  // var pravila = $('input#prihvatam_pravila').is(':checked');
 
   if (fields.name.value.length <= 2 || fields.name.length > 50) {
     var msg = 'Please enter name, between 2 and 50 characters.';
@@ -246,11 +246,12 @@ $('#submit_form').click(function (e) {
     var msg = 'Video file you uploaded is too big. Maximum file size is 150mb.';
     error_handler(msg, '#files');
     return;
-  } else if (pravila !== true) {
-    var msg = 'To continue agree with terms and conditions.';
-    error_handler(msg, '#prihvatam_pravila');
-    return;
   }
+  // else if (pravila !== true) {
+  //   var msg = 'To continue agree with terms and conditions.';
+  //   error_handler(msg, '#prihvatam_pravila');
+  //   return;
+  // }
 
   prepareForm();
   $('#forma').submit();
