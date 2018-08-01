@@ -28,6 +28,7 @@ if ($request_method === 'POST' && $data !== false) {
   require_once 'db.php';
   $data['name'] = mysqli_real_escape_string($connection, $data['name']);
   $data['surname'] = mysqli_real_escape_string($connection, $data['surname']);
+  $data['newsletter'] = isset($_POST['druge_aktivnosti']) && $_POST['druge_aktivnosti'] == 'on' ? 1 : 0;
 
   $file = $_FILES['files'];
 
@@ -47,7 +48,7 @@ if ($request_method === 'POST' && $data !== false) {
   $exist == false ? null : exit("Korisnik je već uploadovao fajl sa tim email-om.");
 
   // create user && get user id
-  $user_id = create_user($data['name'], $data['surname'], $data['email'], $data['country'], $connection);
+  $user_id = create_user($data['name'], $data['surname'], $data['email'], $data['country'], $data['newsletter'], $connection);
   if (!$user_id) {
     exit('User isn\'t created');
   }
