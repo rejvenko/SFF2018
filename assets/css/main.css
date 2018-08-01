@@ -3861,7 +3861,7 @@ body.is-preload #sidebar nav ul li {
   background-image: url("images/intro.svg");
   background-position: top right;
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-attachment: scroll !important;
 }
 
 #intro p {
@@ -3898,8 +3898,8 @@ body.is-preload #sidebar nav ul li {
   background-attachment: fixed;
   background-image: url(images/redbg.png);
   background-position: top right;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-repeat: repeat-y;
+  background-attachment: scroll !important;
 }
 
 #sidebar {
@@ -3934,8 +3934,8 @@ body.is-preload #sidebar nav ul li {
   background-attachment: fixed;
   background-image: url(images/redbg.png);
   background-position: top right;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-repeat: repeat-y;
+  background-attachment: scroll !important;
 }
 
 #drugavest {
@@ -3947,7 +3947,7 @@ body.is-preload #sidebar nav ul li {
   background-image: url(images/redbg.png);
   background-position: top right;
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-attachment: scroll !important;
 }
 
 #cetvrtavest {
@@ -3959,15 +3959,15 @@ body.is-preload #sidebar nav ul li {
   background-image: url(images/redbg.png);
   background-position: top right;
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-attachment: scroll !important;
 }
 
 #moodboard {
   background-attachment: fixed;
   background-image: url(images/redbg.png);
   background-position: top right;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-repeat: repeat-y;
+  background-attachment: scroll !important;
 }
 
 #pravila {
@@ -3979,17 +3979,8 @@ body.is-preload #sidebar nav ul li {
   background-position: right bottom, top left;
   background-repeat: no-repeat;
   background-size: contain, cover;
+  background-attachment: scroll !important;
   padding-bottom: 300px;
-}
-
-@media only screen
-and (min-device-width : 768px)
-and (max-device-width : 1024px)  {
-     #atlantic { background-attachment: scroll !important; }
-}
-
-@media handheld, only screen and (max-width: 668px) {
-     #atlantic { background-attachment: scroll !important; }
 }
 
 #footer {
@@ -4228,7 +4219,7 @@ and (max-device-width : 1024px)  {
   background-image: url(images/redbg.png);
   background-position: top right;
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-attachment: scroll !important;
 }
 
 #header {
@@ -4299,7 +4290,7 @@ h1.major:after {
 		  background-attachment: fixed;
   background-image: url(images/redbg.png);
   background-position: top right;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-repeat: repeat-y;
+  background-attachment: scroll !important;
     display:none;
   }
