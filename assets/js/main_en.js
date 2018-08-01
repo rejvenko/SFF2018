@@ -4,267 +4,255 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
-(function($) {
-    var resizeTimer;
-	var	$window = $(window),
-		$body = $('body'),
-		$sidebar = $('#sidebar');
+(function ($) {
+  var resizeTimer;
+  var $window = $(window),
+    $body = $('body'),
+    $sidebar = $('#sidebar');
 
-    updateSectionHeight();
+  updateSectionHeight();
 
-    // Breakpoints.
-		breakpoints({
-			xlarge:   [ '1281px',  '1680px' ],
-			large:    [ '981px',   '1280px' ],
-			medium:   [ '737px',   '980px'  ],
-			small:    [ '481px',   '736px'  ],
-			xsmall:   [ null,      '480px'  ]
-		});
+  // Breakpoints.
+  breakpoints({
+    xlarge: ['1281px', '1680px'],
+    large: ['981px', '1280px'],
+    medium: ['737px', '980px'],
+    small: ['481px', '736px'],
+    xsmall: [null, '480px']
+  });
 
-	// Hack: Enable IE flexbox workarounds.
-		if (browser.name == 'ie')
-			$body.addClass('is-ie');
+  // Hack: Enable IE flexbox workarounds.
+  if (browser.name == 'ie')
+    $body.addClass('is-ie');
 
-	// Play initial animations on page load.
-		$window.on('load', function() {
-			window.setTimeout(function() {
-				$body.removeClass('is-preload');
-			}, 100);
-		});
+  // Play initial animations on page load.
+  $window.on('load', function () {
+    window.setTimeout(function () {
+      $body.removeClass('is-preload');
+    }, 100);
+  });
 
-	// Forms.
+  // Forms.
 
-		// Hack: Activate non-input submits.
-			$('form').on('click', '.submit', function(event) {
+  // Hack: Activate non-input submits.
+  $('form').on('click', '.submit', function (event) {
 
-				// Stop propagation, default.
-					event.stopPropagation();
-					event.preventDefault();
+    // Stop propagation, default.
+    event.stopPropagation();
+    event.preventDefault();
 
-				// Submit form.
-					$(this).parents('form').submit();
+    // Submit form.
+    $(this).parents('form').submit();
 
-			});
+  });
 
-	// Sidebar.
-		if ($sidebar.length > 0) {
+  // Sidebar.
+  if ($sidebar.length > 0) {
 
-      var $sidebar_nav = $('#sidebar nav');
-      var $sidebar_a = $sidebar_nav.find('a');
+    var $sidebar_nav = $('#sidebar nav');
+    var $sidebar_a = $sidebar_nav.find('a');
 
-			$sidebar_a
-				.addClass('scrolly')
-				.on('click', function() {
+    $sidebar_a
+      .addClass('scrolly')
+      .on('click', function () {
 
-					var $this = $(this);
+        var $this = $(this);
 
-					// External link? Bail.
-						if ($this.attr('href').charAt(0) != '#')
-							return;
+        // External link? Bail.
+        if ($this.attr('href').charAt(0) != '#')
+          return;
 
-					// Deactivate all links.
-						$sidebar_a.removeClass('active');
+        // Deactivate all links.
+        $sidebar_a.removeClass('active');
 
-					// Activate link *and* lock it (so Scrollex doesn't try to activate other links as we're scrolling to this one's section).
-						$this
-							.addClass('active')
-							.addClass('active-locked');
+        // Activate link *and* lock it (so Scrollex doesn't try to activate other links as we're scrolling to this one's section).
+        $this
+          .addClass('active')
+          .addClass('active-locked');
 
-				})
-				.each(function() {
+      })
+      .each(function () {
 
-					var	$this = $(this),
-						id = $this.attr('href'),
-						$section = $(id);
+        var $this = $(this),
+          id = $this.attr('href'),
+          $section = $(id);
 
-					// No section for this link? Bail.
-						if ($section.length < 1)
-							return;
+        // No section for this link? Bail.
+        if ($section.length < 1)
+          return;
 
-					// Scrollex.
-						$section.scrollex({
-							mode: 'middle',
-							top: '-20vh',
-							bottom: '-20vh',
-							initialize: function() {
+        // Scrollex.
+        $section.scrollex({
+          mode: 'middle',
+          top: '-20vh',
+          bottom: '-20vh',
+          initialize: function () {
 
-								// Deactivate section.
-									$section.addClass('inactive');
+            // Deactivate section.
+            $section.addClass('inactive');
 
-							},
-							enter: function() {
+          },
+          enter: function () {
 
-								// Activate section.
-									$section.removeClass('inactive');
+            // Activate section.
+            $section.removeClass('inactive');
 
-								// No locked links? Deactivate all links and activate this section's one.
-									if ($sidebar_a.filter('.active-locked').length == 0) {
+            // No locked links? Deactivate all links and activate this section's one.
+            if ($sidebar_a.filter('.active-locked').length == 0) {
 
-										$sidebar_a.removeClass('active');
-										$this.addClass('active');
+              $sidebar_a.removeClass('active');
+              $this.addClass('active');
 
-									}
+            }
 
-								// Otherwise, if this section's link is the one that's locked, unlock it.
-									else if ($this.hasClass('active-locked'))
-										$this.removeClass('active-locked');
+            // Otherwise, if this section's link is the one that's locked, unlock it.
+            else if ($this.hasClass('active-locked'))
+              $this.removeClass('active-locked');
 
-							}
-						});
+          }
+        });
 
-				});
+      });
 
-		}
+  }
 
-	// Scrolly.
-		$('.scrolly').scrolly({
-			speed: 1000,
-			offset: function() {
+  // Scrolly.
+  $('.scrolly').scrolly({
+    speed: 1000,
+    offset: function () {
 
-				// If <=large, >small, and sidebar is present, use its height as the offset.
-					if (breakpoints.active('<=large')
-					&&	!breakpoints.active('<=small')
-					&&	$sidebar.length > 0)
-						return $sidebar.height();
+      // If <=large, >small, and sidebar is present, use its height as the offset.
+      if (breakpoints.active('<=large')
+        && !breakpoints.active('<=small')
+        && $sidebar.length > 0)
+        return $sidebar.height();
 
-				return 0;
+      return 0;
 
-			}
-		});
+    }
+  });
 
-	// Spotlights.
-		$('.spotlights > section')
-			.scrollex({
-				mode: 'middle',
-				top: '-10vh',
-				bottom: '-10vh',
-				initialize: function() {
+  // Spotlights.
+  $('.spotlights > section')
+    .scrollex({
+      mode: 'middle',
+      top: '-10vh',
+      bottom: '-10vh',
+      initialize: function () {
 
-					// Deactivate section.
-						$(this).addClass('inactive');
+        // Deactivate section.
+        $(this).addClass('inactive');
 
-				},
-				enter: function() {
+      },
+      enter: function () {
 
-					// Activate section.
-						$(this).removeClass('inactive');
+        // Activate section.
+        $(this).removeClass('inactive');
 
-				}
-			})
-			.each(function() {
-
-				var	$this = $(this),
-					$image = $this.find('.image'),
-					$img = $image.find('img'),
-					x;
-
-				// Assign image.
-					$image.css('background-image', 'url(' + $img.attr('src') + ')');
-
-				// Set background position.
-					if (x = $img.data('position'))
-						$image.css('background-position', x);
-
-				// Hide <img>.
-					$img.hide();
-
-			});
-
-	// Features.
-		$('.features')
-			.scrollex({
-				mode: 'middle',
-				top: '-20vh',
-				bottom: '-20vh',
-				initialize: function() {
-
-					// Deactivate section.
-						$(this).addClass('inactive');
-
-				},
-				enter: function() {
-
-					// Activate section.
-						$(this).removeClass('inactive');
-
-				}
-			});
-
-
-	// Sections min height
-    window.onresize = function(event) {
-        clearInterval(resizeTimer);
-
-        resizeTimer = setTimeout(function() {
-            updateSectionHeight();
-        }, 250);
-    };
-
-    $('#files').change(function(e) {
-    	// if (files.length === 1) {
-    	// 	var filesize = files[0].size;
-    	// 	if (filesize > 157286400) {
-    	// 		var msg = 'Fajl je prevelik, maksimalna velicina fajla je 150mb';
-    	// 		error_handler(msg);
-			// }
-		// }
-
-        console.log(check_file_upload());
-
-        if (check_file_upload() == false) {
-            var msg = 'File isn\'t valid. Video file size can be maximum 150mb.';
-            error_handler(msg, '#name');
-            return;
-		}
-
-		// console.log(e)
-		// var files = e.target.files;
-		// window.filess = files;
+      }
     })
+    .each(function () {
+
+      var $this = $(this),
+        $image = $this.find('.image'),
+        $img = $image.find('img'),
+        x;
+
+      // Assign image.
+      $image.css('background-image', 'url(' + $img.attr('src') + ')');
+
+      // Set background position.
+      if (x = $img.data('position'))
+        $image.css('background-position', x);
+
+      // Hide <img>.
+      $img.hide();
+
+    });
+
+  // Features.
+  $('.features')
+    .scrollex({
+      mode: 'middle',
+      top: '-20vh',
+      bottom: '-20vh',
+      initialize: function () {
+
+        // Deactivate section.
+        $(this).addClass('inactive');
+
+      },
+      enter: function () {
+
+        // Activate section.
+        $(this).removeClass('inactive');
+
+      }
+    });
+
+
+  // Sections min height
+  window.onresize = function (event) {
+    clearInterval(resizeTimer);
+
+    resizeTimer = setTimeout(function () {
+      updateSectionHeight();
+    }, 250);
+  };
+
+  $('#files').change(function (e) {
+    if (check_file_upload() == false) {
+      var msg = 'File isn\'t valid. Video file size can be maximum 150mb.';
+      error_handler(msg, '#name');
+      return;
+    }
+  })
+
+
 
 })(jQuery);
 
-$('#submit_form').click(function(e) {
-	e.preventDefault();
-	e.stopPropagation();
+$('#submit_form').click(function (e) {
+  e.preventDefault();
+  e.stopPropagation();
 
-	// get fields
-	var form = $(forma);
-	var data = $(form).serializeArray();
+  // get fields
+  var form = $(forma);
+  var data = $(form).serializeArray();
 
-	window.data = data;
-	var fields = getFields(data);
+  window.data = data;
+  var fields = getFields(data);
 
-    // validate fields
+  // validate fields
   var pravila = $('input#prihvatam_pravila').is(':checked');
 
   if (fields.name.value.length <= 2 || fields.name.length > 50) {
-		var msg = 'Please enter name, between 2 and 50 characters.';
-		error_handler(msg, '#name');
-		return;
-	} else if (fields.surname.value.length <= 2 || fields.surname.length > 50) {
-        var msg = 'Please enter surname, between 2 and 50 characters.';
-        error_handler(msg, '#surname');
-		return;
-	} else if (fields.country.value == '') {
-        var msg = 'Please select country.';
-        error_handler(msg, '#country');
-        return;
-    } else if (fields.email.value.length <= 7 || fields.email.value.indexOf('@') == -1) {
-        var msg = 'Email is not valid. Please enter correct email address.';
-        error_handler(msg, '#email');
-        return;
-    } else if (check_file_upload() !== true) {
-        var msg = 'Video file you uploaded is too big. Maximum file size is 150mb.';
-        error_handler(msg, '#files');
-        return;
-		}	else if (pravila !== true) {
-			var msg = 'To continue agree with terms and conditions.';
-			error_handler(msg, '#prihvatam_pravila');
-			return;
-		}
+    var msg = 'Please enter name, between 2 and 50 characters.';
+    error_handler(msg, '#name');
+    return;
+  } else if (fields.surname.value.length <= 2 || fields.surname.length > 50) {
+    var msg = 'Please enter surname, between 2 and 50 characters.';
+    error_handler(msg, '#surname');
+    return;
+  } else if (fields.country.value == '') {
+    var msg = 'Please select country.';
+    error_handler(msg, '#country');
+    return;
+  } else if (fields.email.value.length <= 7 || fields.email.value.indexOf('@') == -1) {
+    var msg = 'Email is not valid. Please enter correct email address.';
+    error_handler(msg, '#email');
+    return;
+  } else if (check_file_upload() !== true) {
+    var msg = 'Video file you uploaded is too big. Maximum file size is 150mb.';
+    error_handler(msg, '#files');
+    return;
+  } else if (pravila !== true) {
+    var msg = 'To continue agree with terms and conditions.';
+    error_handler(msg, '#prihvatam_pravila');
+    return;
+  }
 
-	prepareForm();
+  prepareForm();
   $('#forma').submit();
 });
 
@@ -313,52 +301,62 @@ function prepareForm() {
 }
 
 var sff_max_file_size = 157286400;
+
 // var sff_max_file_size = 1073741824;
 
 function check_file_upload() {
-	var elem = $('#files');
-	var files = $(elem)[0].files;
+  var elem = $('#files');
+  var files = $(elem)[0].files;
 
-	if (files.length != 1) {
-		return false;
-	}
+  if (files.length != 1) {
+    return false;
+  }
 
-	var filesize = files[0].size;
+  var filesize = files[0].size;
 
-	if (filesize > sff_max_file_size) {
-		return false;
-	}
+  if (filesize > sff_max_file_size) {
+    return false;
+  }
 
-	return true;
+  return true;
 }
 
 function error_handler(msg, element) {
-	$('.form-message').text(msg);
+  $('.form-message').text(msg);
   console.error(msg);
-	if (typeof element != 'undefined') {
-		$(element).focus();
-	}
+  if (typeof element != 'undefined') {
+    $(element).focus();
+  }
 }
 
-function updateSectionHeight(height){
+function updateSectionHeight(height) {
 
-	if (typeof height === 'undefined') {
-        height = $(window).innerHeight();
-	}
+  if (typeof height === 'undefined') {
+    height = $(window).innerHeight();
+  }
 
-    $('#wrapper > section').css('minHeight', height + 'px');
+  $('#wrapper > section').css('minHeight', height + 'px');
 
-	if (height > 500) {
-		$('#ofilmu').css('height',  height + 'px');
-	}
+  if (height > 500) {
+    $('#ofilmu').css('height', height + 'px');
+  }
 }
 
 function getFields(data) {
-	var val = [];
+  var val = [];
 
-    data.forEach(function(field){
-		val[field.name] = field;
-    })
+  data.forEach(function (field) {
+    val[field.name] = field;
+  })
 
-	return val;
+  return val;
+}
+
+function closeNavbar() {
+  var button = $('.navbar-toggler');
+  var navbar = $('.navbar-collapse');
+
+  $(button).addClass('collapsed').attr('aria-expanded', false);
+  ;
+  $(navbar).removeClass('show').attr('aria-expanded', false);
 }

@@ -4019,7 +4019,7 @@ body.is-preload #sidebar nav ul li {
 
 .custom-toggler.navbar-toggler {
   border-color: rgb(255, 102, 203);
-  padding: 1rem !important;
+  padding: 0.2rem !important;
 }
 
 .custom-toggler .navbar-toggler-icon {
@@ -4194,4 +4194,21 @@ h1.major:after {
 
 .language_switch div img {
   display: block;
+}
+
+.navbar {
+  padding: 1rem;
+}
+
+.navbar.fixed-top{
+  background: rgba(0,0,0,0.85) !important;
+}
+
+.custom-toggler.collapsed{
+  margin-bottom: 0px;
+}
+
+.custom-toggler{
+  height: 40px;
+  padding: 0.2rem !important;
 }
