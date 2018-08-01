@@ -4259,3 +4259,14 @@ h1.major:after {
 .atlmargin {
 	margin-right: 50px;
 }
+
+@media screen and (max-width: 700px) {
+
+  #intro .inner {
+    max-width: 100%;
+  }
+
+  #intro .filmskatraka {
+    display: none;
+  }
+}
