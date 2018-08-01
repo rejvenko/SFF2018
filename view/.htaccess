@@ -1,4 +1,0 @@
-AuthType Basic
-AuthName "restricted area"
-AuthUserFile /var/www/html/sff2018/view/.htpasswd
-require valid-user
