@@ -3978,7 +3978,7 @@ body.is-preload #sidebar nav ul li {
   background-image: url(images/traka.png), url(images/redbg.png);
   background-position: right bottom, top left;
   background-repeat: no-repeat;
-  background-size: contain, cover;
+  background-size: contain, auto;
   background-attachment: scroll !important;
   padding-bottom: 300px;
 }
