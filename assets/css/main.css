@@ -3861,7 +3861,7 @@ body.is-preload #sidebar nav ul li {
   background-image: url("images/intro.svg");
   background-position: top right;
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-attachment: scroll !important;
 }
 
 #intro p {
@@ -3898,8 +3898,8 @@ body.is-preload #sidebar nav ul li {
   background-attachment: fixed;
   background-image: url(images/redbg.png);
   background-position: top right;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-repeat: repeat-y;
+  background-attachment: scroll !important;
 }
 
 #sidebar {
@@ -3934,8 +3934,8 @@ body.is-preload #sidebar nav ul li {
   background-attachment: fixed;
   background-image: url(images/redbg.png);
   background-position: top right;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-repeat: repeat-y;
+  background-attachment: scroll !important;
 }
 
 #drugavest {
@@ -3947,7 +3947,7 @@ body.is-preload #sidebar nav ul li {
   background-image: url(images/redbg.png);
   background-position: top right;
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-attachment: scroll !important;
 }
 
 #cetvrtavest {
@@ -3959,15 +3959,15 @@ body.is-preload #sidebar nav ul li {
   background-image: url(images/redbg.png);
   background-position: top right;
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-attachment: scroll !important;
 }
 
 #moodboard {
   background-attachment: fixed;
   background-image: url(images/redbg.png);
   background-position: top right;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-repeat: repeat-y;
+  background-attachment: scroll !important;
 }
 
 #pravila {
@@ -3978,7 +3978,8 @@ body.is-preload #sidebar nav ul li {
   background-image: url(images/traka.png), url(images/redbg.png);
   background-position: right bottom, top left;
   background-repeat: no-repeat;
-  background-size: contain, cover;
+  background-size: contain, auto;
+  background-attachment: scroll !important;
   padding-bottom: 300px;
 }
 
@@ -4040,7 +4041,7 @@ body.is-preload #sidebar nav ul li {
 
 @media screen and (max-width: 1280px) {
   #sidebar + #wrapper {
-    padding-top: 161px;
+    padding-top: 0px;
   }
 
   #sidebar {
@@ -4218,7 +4219,7 @@ body.is-preload #sidebar nav ul li {
   background-image: url(images/redbg.png);
   background-position: top right;
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-attachment: scroll !important;
 }
 
 #header {
@@ -4282,3 +4283,14 @@ h1.major:after {
     display: none;
   }
 }
+
+@media screen and (min-width: 700px) {
+
+#trakaispod {
+		  background-attachment: fixed;
+  background-image: url(images/redbg.png);
+  background-position: top right;
+  background-repeat: repeat-y;
+  background-attachment: scroll !important;
+    display:none;
+  }
