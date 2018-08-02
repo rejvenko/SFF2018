@@ -23,7 +23,7 @@ WHERE u.id > 41 order by u.id desc;";
 
 $res = mysqli_query($connection, $sql);
 ?>
-<table>
+<table width="100%" style="width: 100%;">
   <thead>
     <tr>
         <td>user id</td>
