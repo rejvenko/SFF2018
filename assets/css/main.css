@@ -4041,7 +4041,7 @@ body.is-preload #sidebar nav ul li {
 
 @media screen and (max-width: 1280px) {
   #sidebar + #wrapper {
-    padding-top: 161px;
+    padding-top: 0px;
   }
 
   #sidebar {
