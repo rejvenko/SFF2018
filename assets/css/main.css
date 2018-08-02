@@ -4218,7 +4218,7 @@ body.is-preload #sidebar nav ul li {
 	  background-attachment: fixed;
   background-image: url(images/redbg.png);
   background-position: top right;
-  background-repeat: no-repeat;
+  background-repeat: repeat-y;
   background-attachment: scroll !important;
 }
 
